@@ -1,4 +1,9 @@
-// const db = require("../model/book")
+const mongoose = require("mongoose")
+const db = require("../model")
+let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/foodDb";
+
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI)
 const request = require('request')
 
 let calls = {
@@ -22,17 +27,42 @@ findFoodId: (foodTerm,cb) => {
 }
 }
 
-// calls.findFoodId("ritz",(data)=> {console.log(data)})
+let entries = {
+    findEntries: function (callback) {
+        db.Note.find({}, function (error, found) {
+            if (error) {
+            } else {
+                callback(found)
+            }
+        })
+    },
+    
+   
+    createEntry: (title, postType, body,cb) => {
+        db.Note.create({
+            title: title,
+            postType: postType,
+            body: body
+        }).then((x) => {
+            // cb(x)
+        })
+    },
 
+    
+    viewOneEntry: (id, callback) => {
+        db.Article.findOne({
+            _id: id
+        }).populate("note").then(function (found) {
+            
+            
+            }
+        )
+    }}
+
+    // entries.createEntry("My Chocolate Chip Cookie Recipe","Recipes","2 cups of flour")
 
 module.exports = {
-// findAllBooks: (req,res) => {
-//     db.Books.find().then(dbModel => {
-//         res.json(dbModel)
-       
-//     }).catch(err=> res.status(500).json(err))
-// }
-
+entries:entries,
 calls:calls
 }
 

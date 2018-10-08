@@ -29,6 +29,13 @@ router.get("/api/dbnum/:num", (req,res)=> {
         res.json(data)
     })
 })
+
+router.post("/api/write", (req,res) => {
+    foodController.entries.createEntry(req.body.title, req.body.postType, req.body.thePost, () => {
+        // res.json(data)
+    })
+
+})
     
 
 module.exports = router;

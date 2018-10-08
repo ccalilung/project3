@@ -32,6 +32,26 @@ $("#dbNumSubmit").on("click", function() {
   })
 
 
+  $("#postDb").on("click",function() {
+    event.preventDefault();
+
+    let obj = {
+      title: $("#postTitle").val().trim(),
+      postType: $("#selection").val(),
+      thePost: $("#postBody").val().trim()
+    }
+
+    $.ajax("/api/write" , {
+      type: "POST",
+      data: obj
+    }).then((data) => {
+      console.log(data)
+    })
+
+
+
+  })
+
 
 
 })
