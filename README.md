@@ -1,3 +1,6 @@
-# provider_dashboard
+# Project 3: Food Nutrition and Recipe Web Application
 
-This is a mockup of a provider dashboarding feature for the Patient Screening Tool and Outcomes
+This application aims to give users the ability to research the nutritional value of popular products on supermarket shelves.
+
+Also, users will be able to search for other users' posts and recipes, and will also be able to search for outside recipes.
+
