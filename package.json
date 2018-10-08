@@ -1,37 +1,31 @@
 {
-  "name": "mern",
+  "name": "provider_dashboard",
   "version": "1.0.0",
-  "description": "Mern Demo",
-  "main": "server.js",
+  "description": "This is a mockup of a provider dashboarding feature for the Patient Screening Tool and Outcomes",
+  "main": "index.js",
   "scripts": {
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "node server.js",
-    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
-    "client": "cd client && npm run start",
-    "install": "cd client && yarn install",
-    "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "concurrently": "^3.5.0",
-    "nodemon": "^1.11.0"
-  },
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.3",
-    "if-env": "^1.0.4",
-    "mongoose": "^5.3.1",
-    "request": "^2.88.0"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ccalilung/project3.git"
+    "url": "git+https://github.com/ccalilung/provider_dashboard.git"
   },
   "keywords": [],
+  "author": "",
+  "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ccalilung/project3/issues"
+    "url": "https://github.com/ccalilung/provider_dashboard/issues"
   },
-  "homepage": "https://github.com/ccalilung/project3#readme"
+  "homepage": "https://github.com/ccalilung/provider_dashboard#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "create-hash": "^1.2.0",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "mysql": "^2.16.0",
+    "mysql2": "^1.6.1",
+    "request": "^2.88.0",
+    "sequelize": "^4.38.0"
+  }
 }
