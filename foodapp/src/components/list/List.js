@@ -5,7 +5,7 @@ const List = (props) => {
   return(
     <div>
       {props.name.map(x => (
-        <div id={x.id}>{x.name}</div>
+        <button className="btn btn-success" onClick={() => props.someFunction(x.id)}><div>{x.name}</div></button>
       ))}
       
      

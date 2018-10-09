@@ -2,9 +2,9 @@ import axios from "axios";
 
 export default {
   // Gets all books
-//   getFoods: function() {
-//     return axios.get("/api/food/");
-//   },
+  getIngredients: function(num) {
+    return axios.get("/api/dbnum/" + num);
+  },
   // Gets the book with the given id
   getFoods: function(id) {
     return axios.get("/api/food/" + id);

@@ -21,11 +21,10 @@ router.get("/api/food/:name", (req,res)=> {
     })
 })
 
-router.get("/api/dbnum/:num", (req,res)=> {
+router.get("/api/dbnum/:numb", (req,res)=> {
     
-    foodController.calls.findFoodIngredients(req.params.num,(data) => {
-        console.log(data)
-        res.json(data)
+    foodController.calls.findFoodIngredients(req.params.numb,(data) => {
+        return res.json(data)
     })
 })
 

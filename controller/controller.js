@@ -8,7 +8,7 @@ const request = require('request')
 
 let calls = {
 findFoodIngredients: (idNumber,cb) => {
-    let website = ' https://api.nal.usda.gov/ndb/reports/?ndbno=' + idNumber + '&type=b&format=json&api_key=b5BZ4JOYpXqHwA8EktVH9fOCPdJf2ZLRP8Rtztez'
+    let website = 'https://api.nal.usda.gov/ndb/reports/?ndbno=' + idNumber + '&type=b&format=json&api_key=b5BZ4JOYpXqHwA8EktVH9fOCPdJf2ZLRP8Rtztez'
     request.get(website, (err,res,data) => {
         let JSONfile = JSON.parse(data)
         cb(JSONfile)
