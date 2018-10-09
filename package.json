@@ -1,32 +1,28 @@
 {
-  "name": "provider_dashboard",
+  "name": "project3",
   "version": "1.0.0",
-  "description": "This is a mockup of a provider dashboarding feature for the Patient Screening Tool and Outcomes",
-  "main": "index.js",
+  "description": "This application aims to give users the ability to research the nutritional value of popular products on supermarket shelves.",
+  "main": "server.js",
+  "dependencies": {
+    "mongoose": "^5.3.2",
+    "mysql2": "^1.6.1",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "client": "cd client && yarn start",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ccalilung/provider_dashboard.git"
+    "url": "git+https://github.com/ccalilung/project3.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ccalilung/provider_dashboard/issues"
+    "url": "https://github.com/ccalilung/project3/issues"
   },
-  "homepage": "https://github.com/ccalilung/provider_dashboard#readme",
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "create-hash": "^1.2.0",
-    "dotenv": "^6.0.0",
-    "express": "^4.16.3",
-    "express-handlebars": "^3.0.0",
-    "mongoose": "^5.3.2",
-    "mysql": "^2.16.0",
-    "mysql2": "^1.6.1",
-    "request": "^2.88.0",
-    "sequelize": "^4.38.0"
-  }
+  "homepage": "https://github.com/ccalilung/project3#readme"
 }

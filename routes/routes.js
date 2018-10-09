@@ -17,8 +17,7 @@ router.get("/", (req,res) => {
 router.get("/api/food/:name", (req,res)=> {
     
     foodController.calls.findFoodId(req.params.name,(data) => {
-        console.log(data)
-        res.json(data)
+        return res.json(data)
     })
 })
 
