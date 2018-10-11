@@ -4,6 +4,10 @@
   "description": "This application aims to give users the ability to research the nutritional value of popular products on supermarket shelves.",
   "main": "server.js",
   "dependencies": {
+    "bcrypt": "^3.0.1",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
     "mongoose": "^5.3.2",
     "mysql2": "^1.6.1",
     "request": "^2.88.0"

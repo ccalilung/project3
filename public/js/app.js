@@ -51,7 +51,25 @@ $("#dbNumSubmit").on("click", function() {
 
 
   })
+  $("#apiCall").on("click",function() {
+    event.preventDefault();
 
+    let obj = {
+      username: $("#username").val().trim(),
+      password: $("#password").val().trim(),
+     
+    }
+
+    $.ajax("/api/createuser" , {
+      type: "POST",
+      data: obj
+    }).then((data) => {
+      console.log(data)
+    })
+
+
+
+  })
 
 
 })

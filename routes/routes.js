@@ -34,6 +34,19 @@ router.post("/api/write", (req,res) => {
     })
 
 })
+
+router.post("/api/createuser", (req,res) => {
+    foodController.auth.createUser(req.body.username, req.body.password, (data) => {
+
+    })
+    // res.redirect("/home")
+})
+
+router.post("/api/authcheck", (req,res) => {
+    foodController.auth.verifyAuth(req.body.username, req.body.password, (data) => {
+        res.send(data)
+    })
+})
     
 
 module.exports = router;

@@ -1,14 +1,33 @@
 import axios from "axios";
 
 export default {
-  // Gets all books
+
   getIngredients: function(num) {
     return axios.get("/api/dbnum/" + num);
   },
-  // Gets the book with the given id
+
   getFoods: function(id) {
     return axios.get("/api/food/" + id);
   },
+
+  authCheck: function(credentials) {
+    return axios.post("/api/authcheck/",credentials).then((response) => {
+      console.log(response)
+      // window.location = "/home"
+    })
+
+  },
+  
+  createUser: function(credentials) {
+    console.log(credentials)
+    return axios.post("/api/createuser",credentials).then(function(response)
+    {
+      console.log(response)
+      
+
+    })
+  }
+
 //   // Deletes the book with the given id
 //   deleteBook: function(id) {
 //     return axios.delete("/api/books/" + id);

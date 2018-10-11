@@ -4,7 +4,7 @@ import Search from "../search/Search"
 import SearchBtn from "../search/SearchBtn"
 import List from "../list/List"
 import ListIngredients from "../list/ListIngredients"
-
+import Nav from '../Nav/index'
 
 class Food extends React.Component {
 
@@ -18,7 +18,6 @@ state = {
 
 
   handleInputChange = event => {
-      
     const { name, value } = event.target;
     this.setState({
       [name]: value
@@ -33,7 +32,7 @@ loadIngredients = (id) => {
     let a = res.data.report.food.nutrients
       let b = []
       for(let i=0;i<a.length;i++){
-      b.push({name:a[i].name})}
+      b.push({name:a[i].name},{value:a[i].value},{unit:a[i].unit})}
         this.setState({ingredients:res.data.report.food.ing.desc,nutrients:b})
         
     })
@@ -56,7 +55,12 @@ loadFoods = (event) => {
 
   render() {
       return(
+       
           <div>
+
+             <Nav />
+             <div className="container">
+             
         <Search
         value={this.state.food}
         onChange={this.handleInputChange}
@@ -70,6 +74,7 @@ loadFoods = (event) => {
         
         <div>
             <ListIngredients ingredients={this.state.ingredients} nutrients={this.state.nutrients}/>
+        </div>
         </div>
         </div>
         )

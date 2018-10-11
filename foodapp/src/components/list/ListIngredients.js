@@ -3,11 +3,11 @@ import React from "react";
 
 const ListIngredients = (props) => {
   return(
-    <div>
+    <div className="container">
       {props.ingredients}
       
       {props.nutrients.map(x => 
-        <div>{x.name}</div>)}
+        <div className="text-left">{x.name} {x.value}{x.unit}</div>)}
      
     </div>
   )

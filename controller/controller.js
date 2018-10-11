@@ -1,10 +1,14 @@
 const mongoose = require("mongoose")
 const db = require("../model")
 let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/foodDb";
-
+const bcrypt = require('bcrypt')
+const saltRounds = 10
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI)
 const request = require('request')
+
+
+
 
 let calls = {
 findFoodIngredients: (idNumber,cb) => {
@@ -25,6 +29,35 @@ findFoodId: (foodTerm,cb) => {
         
     })
 }
+}
+
+let auth = {
+    verifyAuth: (username,enteredPass,cb) => {
+        
+        db.User.find({username:username}, (err,found) => {
+            bcrypt.compare(enteredPass,found[0].password).then(data => {
+            cb(true)
+            
+        })
+        })
+        
+        
+       
+    },
+
+    createUser: (username, password, cb) => {
+        
+        
+        bcrypt.hash(password, saltRounds, (err, hash) => {
+            db.User.create({
+                username: username,
+                password: hash
+            }).then(() =>
+            {
+                console.log("success")
+            })
+        })
+    }
 }
 
 let entries = {
@@ -58,12 +91,13 @@ let entries = {
             }
         )
     }}
+    
 
-    // entries.createEntry("My Chocolate Chip Cookie Recipe","Recipes","2 cups of flour")
 
 module.exports = {
 entries:entries,
-calls:calls
+calls:calls,
+auth:auth
 }
 
 
