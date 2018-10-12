@@ -44,7 +44,9 @@ router.post("/api/createuser", (req,res) => {
 
 router.post("/api/authcheck", (req,res) => {
     foodController.auth.verifyAuth(req.body.username, req.body.password, (data) => {
+        console.log(data)
         res.send(data)
+        
     })
 })
     
