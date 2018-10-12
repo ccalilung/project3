@@ -36,7 +36,11 @@ let auth = {
         
         db.User.find({username:username}, (err,found) => {
             bcrypt.compare(enteredPass,found[0].password).then(data => {
-            cb(true)
+            if(data === true)
+                cb(data)
+
+            else if (data === false)
+                cb(res.redirect("/"))
             
         })
         })

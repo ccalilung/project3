@@ -12,8 +12,12 @@ export default {
 
   authCheck: function(credentials) {
     return axios.post("/api/authcheck/",credentials).then((response) => {
-      console.log(response)
-      // window.location = "/home"
+      if(response === false) {
+
+      }
+
+      if (response === true) {
+      window.location = "/home"}
     })
 
   },
