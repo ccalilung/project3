@@ -1,11 +1,22 @@
 import React from "react";
 
-const Nav = () => (
+const Nav = (props) => (
   
   <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
     <a className="navbar-brand" href="/"> Nutrition and Recipe App
-      
     </a>
+
+    <ul className="navbar-nav mr-auto">
+      <li className={props.classHome}>
+        <a className="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li className={props.classBlog}>
+        <a className="nav-link" href="/blog">Blog</a>
+      </li>
+      <li className={props.classRecipes}>
+        <a className="nav-link" href="/recipes">Recipes</a>
+      </li>
+      </ul>
   </nav>
   
 );

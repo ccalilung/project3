@@ -1,3 +1,4 @@
+require("dotenv").config();
 const mongoose = require("mongoose")
 const db = require("../model")
 let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/foodDb";
@@ -9,10 +10,9 @@ const request = require('request')
 
 
 
-
 let calls = {
 findFoodIngredients: (idNumber,cb) => {
-    let website = 'https://api.nal.usda.gov/ndb/reports/?ndbno=' + idNumber + '&type=b&format=json&api_key=b5BZ4JOYpXqHwA8EktVH9fOCPdJf2ZLRP8Rtztez'
+    let website = 'https://api.nal.usda.gov/ndb/reports/?ndbno=' + idNumber + '&type=b&format=json&api_key=' + process.env.apikey
     request.get(website, (err,res,data) => {
         let JSONfile = JSON.parse(data)
         cb(JSONfile)
@@ -21,7 +21,8 @@ findFoodIngredients: (idNumber,cb) => {
 
 findFoodId: (foodTerm,cb) => {
     
-    let website = "https://api.nal.usda.gov/ndb/search/?format=json&q=" + foodTerm +"&sort=n&max=5&offset=0&api_key=b5BZ4JOYpXqHwA8EktVH9fOCPdJf2ZLRP8Rtztez"
+    let website = "https://api.nal.usda.gov/ndb/search/?format=json&q=" + foodTerm +"&sort=n&max=5&offset=0&api_key=" + process.env.apikey
+    console.log(website)
     request.get(website, (err,res,data) => {
         let JSONfile = JSON.parse(data)
         cb(JSONfile)
