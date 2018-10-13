@@ -21,6 +21,14 @@ router.get("/api/food/:name", (req,res)=> {
     })
 })
 
+router.get("/api/recipe/:search", (req,res)=> {
+    
+    foodController.calls.findRecipes(req.params.search,(data) => {
+        
+        return res.json(data)
+    })
+})
+
 router.get("/api/dbnum/:numb", (req,res)=> {
     
     foodController.calls.findFoodIngredients(req.params.numb,(data) => {

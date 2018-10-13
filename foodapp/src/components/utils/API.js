@@ -12,10 +12,13 @@ export default {
 
   authCheck: function(credentials) {
     return axios.post("/api/authcheck/",credentials).then((response) => {
-      console.log(response)
       window.location = "/home"
     })
 
+  },
+
+  findRecipes: (searchTerm) => {
+    return axios.get("/api/recipe/" + searchTerm)
   },
   
   createUser: function(credentials) {

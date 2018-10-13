@@ -9,7 +9,6 @@ mongoose.connect(MONGODB_URI)
 const request = require('request')
 
 
-
 let calls = {
 findFoodIngredients: (idNumber,cb) => {
     let website = 'https://api.nal.usda.gov/ndb/reports/?ndbno=' + idNumber + '&type=b&format=json&api_key=' + process.env.apikey
@@ -22,15 +21,30 @@ findFoodIngredients: (idNumber,cb) => {
 findFoodId: (foodTerm,cb) => {
     
     let website = "https://api.nal.usda.gov/ndb/search/?format=json&q=" + foodTerm +"&sort=n&max=5&offset=0&api_key=" + process.env.apikey
-    console.log(website)
+    
     request.get(website, (err,res,data) => {
         let JSONfile = JSON.parse(data)
         cb(JSONfile)
         
         
     })
+},
+
+findRecipes: (foodTerm, cb) => {
+    let website = 'https://api.edamam.com/search?q=chicken&app_id='+ process.env.app_id + '&app_key='+process.env.app_key
+   
+    // let website = 'https://api.edamam.com/search?q=' + foodTerm + '&app_id=$'+ process.env.app_id + '&app_key=$'+process.env.app_key
+    request.get(website, (err, res, data) => {
+        let jsonData = JSON.parse(data)
+        cb(jsonData)
+        
+           
+    })
 }
+
 }
+
+calls.findRecipes(1,()=>{})
 
 let auth = {
     verifyAuth: (username,enteredPass,cb) => {
@@ -51,8 +65,6 @@ let auth = {
     },
 
     createUser: (username, password, cb) => {
-        
-        
         bcrypt.hash(password, saltRounds, (err, hash) => {
             db.User.create({
                 username: username,

@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Recipes = () => (
+const Recipes = (props) => (
 
 <div>
 Recipes Goes Here
 
-
+{props.theData}
 
     </div>
 )
