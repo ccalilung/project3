@@ -44,7 +44,7 @@ findRecipes: (foodTerm, cb) => {
 
 }
 
-calls.findRecipes(1,()=>{})
+
 
 let auth = {
     verifyAuth: (username,enteredPass,cb) => {

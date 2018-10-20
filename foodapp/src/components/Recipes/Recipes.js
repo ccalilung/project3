@@ -1,13 +1,16 @@
 import React from 'react';
 
-const Recipes = (props) => (
+const Recipes = (props) => {
 
+return(
 <div>
-Recipes Goes Here
-
-{props.theData}
-
+ {props.recipes.map(x => (
+     <div>
+        <button className="btn btn-success" onClick={() => props.printIngredients(x.ingredients)}> <div>{x.name}</div></button>
+        <br/>
+        </div>
+      ))}
     </div>
 )
-
+ }
 export default Recipes;

@@ -2,11 +2,16 @@ import React from 'react'
 import Nav from '../Nav/Nav'
 import Recipes from './Recipes'
 import API from '../utils/API';
+import RecipeIngredients from './RecipeIngredients'
+import Search from '../search/Search'
+import SearchBtn from '../search/SearchBtn'
 
 class RecipesPage extends React.Component {
 state = {
 search: 'chicken',
-recipes: []
+recipes: [],
+ingredients: []
+
 
 }
 
@@ -17,29 +22,39 @@ findRecipes = (event) => {
         .then(data => {
            let a = data.data.hits
            let b = [];
-           for (let i=0;a.length;i++) {
-               b.push(a[i])
-           }
-            this.setState({recipes:b})
-            // for(let i = 0; i<a.length;i++) {
-            //     for(let j=0;j<a[i].recipe.ingredientList.length;i++){
-            //         b.push[{a.recipe.label:a.recipe.ingredientList}]
-            //     }
-            // }
-        
-       
+           
+           for (let i=0;i<a.length;i++) {
+                    b.push({name:a[i].recipe.label, ingredients:a[i].recipe.ingredientLines})
+                    }
+            this.setState({recipes:b}) 
+            console.log(b)
+
 })}
+
+printIngredients = (ingredients) => {
+    let b = []
+    ingredients.map(x => {
+        b.push(x)
+    })
+    this.setState({ingredients:b})    
+}
+    
 
 
     render() {
         return(
             <div>
+            
             <Nav classHome="nav-item" classBlog="nav-item" classRecipes="nav-item active"/>
-            <button type="button" onClick={this.findRecipes}>Button</button>
-            <Recipes theData={this.state.recipes}/>
-
+            <div className="container">
+            
+            <Search />
+            <SearchBtn>Search for Recipes</SearchBtn>
+            <Recipes recipes={this.state.recipes} printIngredients={this.printIngredients}/>
+            <RecipeIngredients ingredients={this.state.ingredients} />
+                
                 </div>
-
+                </div>
         )
     }
 }

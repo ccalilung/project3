@@ -2,7 +2,7 @@ import React from "react";
 
 const Nav = (props) => (
   
-  <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
     <a className="navbar-brand" href="/"> Nutrition and Recipe App
     </a>
 

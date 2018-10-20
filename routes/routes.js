@@ -38,7 +38,7 @@ router.get("/api/dbnum/:numb", (req,res)=> {
 
 router.post("/api/write", (req,res) => {
     foodController.entries.createEntry(req.body.title, req.body.postType, req.body.thePost, () => {
-        // res.json(data)
+        res.json(data)
     })
 
 })
