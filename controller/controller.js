@@ -31,9 +31,7 @@ findFoodId: (foodTerm,cb) => {
 },
 
 findRecipes: (foodTerm, cb) => {
-    let website = 'https://api.edamam.com/search?q=chicken&app_id='+ process.env.app_id + '&app_key='+process.env.app_key
-   
-    // let website = 'https://api.edamam.com/search?q=' + foodTerm + '&app_id=$'+ process.env.app_id + '&app_key=$'+process.env.app_key
+    let website = 'https://api.edamam.com/search?q=' + foodTerm + '&app_id='+ process.env.app_id + '&app_key='+process.env.app_key
     request.get(website, (err, res, data) => {
         let jsonData = JSON.parse(data)
         cb(jsonData)

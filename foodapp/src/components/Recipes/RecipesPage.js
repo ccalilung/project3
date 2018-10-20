@@ -8,12 +8,19 @@ import SearchBtn from '../search/SearchBtn'
 
 class RecipesPage extends React.Component {
 state = {
-search: 'chicken',
+search: '',
 recipes: [],
 ingredients: []
 
 
 }
+
+handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
 
 findRecipes = (event) => {
     event.preventDefault()
@@ -48,8 +55,10 @@ printIngredients = (ingredients) => {
             <Nav classHome="nav-item" classBlog="nav-item" classRecipes="nav-item active"/>
             <div className="container">
             
-            <Search />
-            <SearchBtn>Search for Recipes</SearchBtn>
+            <Search value={this.state.search}
+        onChange={this.handleInputChange}
+        name="search" />
+            <SearchBtn onClick={this.findRecipes}>Search for Recipes</SearchBtn>
             <Recipes recipes={this.state.recipes} printIngredients={this.printIngredients}/>
             <RecipeIngredients ingredients={this.state.ingredients} />
                 

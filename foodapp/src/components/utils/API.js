@@ -18,16 +18,14 @@ export default {
   },
 
   findRecipes: (searchTerm) => {
+    
     return axios.get("/api/recipe/" + searchTerm)
   },
   
   createUser: function(credentials) {
-    console.log(credentials)
+    
     return axios.post("/api/createuser",credentials).then(function(response)
     {
-      console.log(response)
-      
-
     })
   }
 
