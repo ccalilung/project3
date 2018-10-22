@@ -4,11 +4,8 @@ import React from "react";
 const ListIngredients = (props) => {
   return(
     <div className="container">
+    <h3>Ingredient List for <i> {props.product}</i></h3>
       {props.ingredients}
-      
-      {props.nutrients.map(x => 
-        <div className="text-left">{x.name} {x.value}{x.unit}</div>)}
-     
     </div>
   )
 }

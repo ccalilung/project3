@@ -8,7 +8,7 @@ const Nav = (props) => (
 
     <ul className="navbar-nav mr-auto">
       <li className={props.classHome}>
-        <a className="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+        <a className="nav-link" href="/nutritionfacts">Nutrition Facts <span class="sr-only">(current)</span></a>
       </li>
       <li className={props.classBlog}>
         <a className="nav-link" href="/blog">Blog</a>
