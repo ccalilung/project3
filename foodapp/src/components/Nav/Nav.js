@@ -3,7 +3,7 @@ import React from "react";
 const Nav = (props) => (
   
   <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-    <a className="navbar-brand" href="/"> Nutrition and Recipe App
+    <a className="navbar-brand" href="/home"> Nutrition and Recipe App
     </a>
 
     <ul className="navbar-nav mr-auto">
@@ -15,6 +15,12 @@ const Nav = (props) => (
       </li>
       <li className={props.classRecipes}>
         <a className="nav-link" href="/recipes">Recipes</a>
+      </li>
+      </ul>
+
+      <ul className="navbar-nav float:right">
+      <li className={props.classLogin}>
+        <a className="nav-link" href="/">Login</a>
       </li>
       </ul>
   </nav>

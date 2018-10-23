@@ -1,13 +1,16 @@
 import React from 'react';
 
-const Blog = (props) => (
+const Blog = (props) => {
 
+return(
 <div>
-Blog Goes Here
-
-
-
+ {props.Blogs.map(x => (
+     <div>
+         <div>{x.name}</div>
+        <br/>
+        </div>
+      ))}
     </div>
 )
-
+ }
 export default Blog;

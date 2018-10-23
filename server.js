@@ -2,7 +2,7 @@ require("dotenv").config();
 let express = require("express");
 let bodyParser = require("body-parser");
 let app = express();
-let routes = require("./routes/routes")
+let routes = require("./routes/")
 let PORT = process.env.PORT || 8080;
 
 
