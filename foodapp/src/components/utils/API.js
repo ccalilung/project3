@@ -28,5 +28,18 @@ export default {
     })
   },
   //blog
+  addBlogs: (blogPost) => {
+    console.log(blogPost)
+    return axios.post("/api/blog/write", blogPost).then(data => {
+      window.location = "/blog"
+    })
+  },
+  findBlogs: () => {
+    return axios.get("/api/blog/show").then(data => {
+      console.log(data)
+      return data
+      
+    })
+  }
 
 };

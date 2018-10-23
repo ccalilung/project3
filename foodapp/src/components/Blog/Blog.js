@@ -4,10 +4,12 @@ const Blog = (props) => {
 
 return(
 <div>
- {props.Blogs.map(x => (
+    <h1>Blog Posts:</h1>
+ {props.Blogs.map((x,i)=> (
      <div>
-         <div>{x.name}</div>
-        <br/>
+         <h4>Post #{i+1}: {x.title}</h4>
+        <h6>{x.body}</h6>
+        <hr/>
         </div>
       ))}
     </div>

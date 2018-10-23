@@ -72,7 +72,7 @@ module.exports = {
     },
     //auth
     verifyAuth: (req, res) => {
-            db.User.find({
+        db.User.find({
             username: req.body.username
         }, (err, data) => {
             bcrypt.compare(req.body.password, data[0].password).then(data => {
@@ -80,37 +80,36 @@ module.exports = {
             })
         })
     },
-    createUser: (req,res) => {
+    createUser: (req, res) => {
         db.User.find({
-            username: req.body.username}).then(data => {
-                if (data.length !== 0) {
-                    res.send(false)
-                }
-                else {
-                    bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
-                        db.User.create({
-                            username: req.body.username,
-                            password: hash
-                        }).then((data) => {
-                            res.send(data)
-                        })
+            username: req.body.username
+        }).then(data => {
+            if (data.length !== 0) {
+                res.send(false)
+            } else {
+                bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
+                    db.User.create({
+                        username: req.body.username,
+                        password: hash
+                    }).then((data) => {
+                        res.send(data)
                     })
-        }})
-    },
-    //blog
-    findAll: function (callback) {
-        db.Blog.find({}, function (error, found) {
-            if (error) {} else {
-                callback(found)
+                })
             }
         })
     },
-    createEntry: (title, postType, body, cb) => {
+    //blog
+    findAll: (req,res) => {
+        db.Blog.find({}).then(function (data) {
+            res.json(data)
+            })
+    },
+    createEntry: (req,res) => {
         db.Blog.create({
-            title: title,
-            body: body
-        }).then((x) => {
-            // cb(x)
+            title: req.body.title,
+            body: req.body.content
+        }).then((data) => {
+            res.send(data)
         })
     }
 
