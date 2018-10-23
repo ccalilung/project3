@@ -4,14 +4,9 @@ let bodyParser = require("body-parser");
 let app = express();
 let routes = require("./routes/")
 let PORT = process.env.PORT || 8080;
-const path = require('path')
 
-app.get('*', function (req, res) {
- const index = path.join(__dirname, 'foodapp','build', 'index.html');
-  res.sendFile(index);
+app.use(express.static('client/build'));
 
-  
-});
 
 
 
