@@ -95,6 +95,11 @@ loadFoods = (event) => {
           <div>
             <Nav />
               <div className="container">
+              <div className="row">
+                <div className="col-md-12 text-center">
+                <h1>Nutritional Content &amp; Ingredient Finder</h1>
+                </div>
+              </div>
                 <div className="row">
                   <div className="col-md-6">
                     <Search label="Search for Nutritional Facts &amp; Ingredients" value={this.state.food} onChange={this.handleInputChange} name="food"/>
