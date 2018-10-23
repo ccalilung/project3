@@ -8,7 +8,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("foodapp/build"));
 }
 
-app.use(express.static("public"))
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
