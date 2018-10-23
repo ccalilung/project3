@@ -3,13 +3,20 @@
   "version": "1.0.0",
   "description": "This application aims to give users the ability to research the nutritional value of popular products on supermarket shelves.",
   "main": "server.js",
+  "dependencies": {
+    "bcrypt": "^3.0.2",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.4",
+    "react": "^16.5.2",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "node server.js",
-    "start:dev": "concurrently \"nodemon --ignore 'foodapp/*'\" \"npm run foodapp\"",
-    "foodapp": "cd foodapp && npm run start",
-    "heroku-postbuild": "cd foodapp && npm install && npm run build"
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && yarn && yarn run build"
   },
   "repository": {
     "type": "git",
@@ -21,14 +28,5 @@
   "bugs": {
     "url": "https://github.com/ccalilung/project3/issues"
   },
-  "homepage": "https://github.com/ccalilung/project3#readme",
-  "dependencies": {
-    "bcrypt": "^3.0.2",
-    "dotenv": "^6.1.0",
-    "express": "^4.16.4",
-    "mongoose": "^5.3.4",
-    "react": "^16.5.2",
-    "request": "^2.88.0",
-    "request-promise": "^4.2.2"
-  }
+  "homepage": "https://github.com/ccalilung/project3#readme"
 }
