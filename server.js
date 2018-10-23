@@ -4,7 +4,9 @@ let bodyParser = require("body-parser");
 let app = express();
 let routes = require("./routes/")
 let PORT = process.env.PORT || 8080;
-
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("foodapp/build"));
+}
 
 app.use(express.static("public"))
 
