@@ -2,7 +2,7 @@ import React from 'react';
 
 const Fat = (props) => (
     <div>
-        Fat Content:<br/>   
+        Fat Content(g):<br/>   
         <input type="text" {...props}></input>
     </div>
 )

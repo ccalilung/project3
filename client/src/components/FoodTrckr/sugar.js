@@ -2,7 +2,7 @@ import React from 'react';
 
 const Sugar = (props) => (
     <div>
-        Sugar Content:<br/>
+        Sugar Content(g):<br/>
         <input type="text" {...props}></input>
     </div>
 )

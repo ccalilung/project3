@@ -27,7 +27,9 @@ class FoodTrckrPage extends React.Component {
         sodiumArr: [],
         sugarArr: [],
         xAxis: [],
-        graph: false
+        graph: false,
+        measure: '',
+        error: false
 
     }
 
@@ -39,22 +41,31 @@ class FoodTrckrPage extends React.Component {
       };
 
     submitEntry = () => {
- 
+        
         let obj = {
             food: this.state.food,
-            calories: this.state.calories,
-            carbs: this.state.carbs,
-            fat: this.state.fat,
-            protein: this.state.protein,
-            sodium: this.state.sodium,
-            sugar: this.state.sugar,
+            calories: Number(this.state.calories),
+            carbs: Number(this.state.carbs),
+            fat: Number(this.state.fat),
+            protein: Number(this.state.protein),
+            sodium: Number(this.state.sodium),
+            sugar: Number(this.state.sugar),
         }
+
+
+        if (isNaN(obj.calories) || isNaN(obj.carbs) || isNaN(obj.fat) || isNaN(obj.protein) || isNaN(obj.sodium) || isNaN(obj.sugar) ){
+            this.setState({error:true})
+            return
+        } 
+        else {
+            this.setState({error:false})
         API.addFoodEntry(obj).then(data => {
-            this.getGraph()
+        
         })
     }
+    }
 
-    getGraph = (all,individual) => {
+    getGraph = (individual) => {
     //   event.preventDefault();
     this.setState({caloriesArr: [],
         carbsArr: [],
@@ -80,7 +91,7 @@ class FoodTrckrPage extends React.Component {
                 calories.push(food.calories)
                 xAxis.push(food.food)
             })
-            this.setState({graph:true,xAxis:xAxis,caloriesArr:calories})
+            this.setState({graph:true,xAxis:xAxis,caloriesArr:calories,measure:'calories x 1000'})
         }
 
         else if (individual === 'carbs') {
@@ -88,14 +99,14 @@ class FoodTrckrPage extends React.Component {
                 carbs.push(food.carbs)
                 xAxis.push(food.food)
             })
-            this.setState({graph:true,xAxis:xAxis,carbsArr:carbs})
+            this.setState({graph:true,xAxis:xAxis,carbsArr:carbs,measure:'grams'})
         }
         else if (individual === 'fat') {
             data.data.forEach(food => {
                 fat.push(food.fat)
                 xAxis.push(food.food)
             })
-            this.setState({graph:true,xAxis:xAxis,fatArr:fat})
+            this.setState({graph:true,xAxis:xAxis,fatArr:fat,measure:'grams'})
         }
 
         else if (individual === 'protein') {
@@ -103,7 +114,7 @@ class FoodTrckrPage extends React.Component {
                 protein.push(food.protein)
                 xAxis.push(food.food)
             })
-            this.setState({graph:true,xAxis:xAxis,proteinArr:protein})
+            this.setState({graph:true,xAxis:xAxis,proteinArr:protein,measure:'grams'})
         }
 
         else if (individual === 'sugar') {
@@ -111,7 +122,7 @@ class FoodTrckrPage extends React.Component {
                 sugar.push(food.sugar)
                 xAxis.push(food.food)
             })
-            this.setState({graph:true,xAxis:xAxis,sugarArr:sugar})
+            this.setState({graph:true,xAxis:xAxis,sugarArr:sugar,measure:'grams'})
         }
 
         else if (individual === 'sodium') {
@@ -119,26 +130,21 @@ class FoodTrckrPage extends React.Component {
                 sodium.push(food.sodium)
                 xAxis.push(food.food)
             })
-            this.setState({graph:true,xAxis:xAxis,sodiumArr:sodium})
+            this.setState({graph:true,xAxis:xAxis,sodiumArr:sodium,measure:'milligrams'})
         }
 
-        else if(all === true) {
-            data.data.forEach((food) => {
-                xAxis.push(food.food)
-                calories.push(food.calories)
-                carbs.push(food.carbs)
-                fat.push(food.fat)
-                protein.push(food.protein)
-                sodium.push(food.sodium)
-                sugar.push(food.sugar)
-            })   
-            this.setState({graph:true,caloriesArr:calories,carbsArr:carbs,fatArr:fat,proteinArr:protein,sodiumArr:sodium,sugarArr:sugar,xAxis:xAxis})
-        }
+        
         })
     }
 
     render() {
         let thePlot;
+        let errorMsg;
+
+        if(this.state.error === true) {
+            errorMsg = <h2 className="text-danger text-center">You have entered a value other than a number into the tracker. Please check your inputs and try again.</h2>
+        }
+
         if(this.state.graph === false) {
 
         }
@@ -196,7 +202,7 @@ class FoodTrckrPage extends React.Component {
               },
               
             ]}
-            layout={ {xaxis:{autotick:false,ticklen:1},yaxis:{label:'number'}, title:'Food Trckr'}}
+            layout={ {xaxis:{autotick:false,ticklen:1},yaxis:{title:this.state.measure}, title:'Food Trckr'}}
           />
         }
         return(
@@ -205,6 +211,7 @@ class FoodTrckrPage extends React.Component {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-12 text-center">
+                        {errorMsg}
                         <h1>Food Trckr</h1>
                         </div>
                     </div>
@@ -221,14 +228,14 @@ class FoodTrckrPage extends React.Component {
                     </div>
                     <div className="col-md-9">
                     
-                    <button className="btn btn-success m-2" onClick={() => this.getGraph(true,null)}>Full Graph</button>
-                    <button className="btn btn-success m-2" onClick={() => this.getGraph(false,'calories')}>Calories</button>
-                    <button className="btn btn-success m-2" onClick={() => this.getGraph(false,'carbs')}>Carbohydrates</button>
-                    <button className="btn btn-success m-2" onClick={() => this.getGraph(false,'fat')}>Fats</button>
-                    <button className="btn btn-success m-2" onClick={() => this.getGraph(false,'protein')}>Protein</button>
-                    <button className="btn btn-success m-2" onClick={() => this.getGraph(false,'sugar')}>Sugar</button>
-                    <button className="btn btn-success m-2" onClick={() => this.getGraph(false,'sodium')}>Sodium</button>
-                    <button className="btn btn-success m-2" onClick={() => this.getGraph(false,false)}>Clear</button>
+                   
+                    <button className="btn btn-success m-2" onClick={() => this.getGraph('calories')}>Calories</button>
+                    <button className="btn btn-success m-2" onClick={() => this.getGraph('carbs')}>Carbohydrates</button>
+                    <button className="btn btn-success m-2" onClick={() => this.getGraph('fat')}>Fats</button>
+                    <button className="btn btn-success m-2" onClick={() => this.getGraph('protein')}>Protein</button>
+                    <button className="btn btn-success m-2" onClick={() => this.getGraph('sugar')}>Sugar</button>
+                    <button className="btn btn-success m-2" onClick={() => this.getGraph('sodium')}>Sodium</button>
+                    <button className="btn btn-danger m-2" onClick={() => this.getGraph(false)}>Clear</button>
 
                     {thePlot}
                     

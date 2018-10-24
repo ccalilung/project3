@@ -2,7 +2,7 @@ import React from 'react';
 
 const Calories = (props) => (
     <div>
-        Calorie Content:<br/>
+        Calorie Content(kcal):<br/>
         <input type="text" {...props}></input>
     </div>
 )
