@@ -6,7 +6,6 @@ import Food from './components/pages/Food'
 import Blog from './components/Blog/BlogPage'
 import Recipes from './components/Recipes/RecipesPage'
 import Home from './components/pages/Home'
-import FoodTrckr from './components/FoodTrckr/FoodTrckrPage';
 
 
 class App extends Component {
@@ -22,7 +21,6 @@ class App extends Component {
         <Route exact path="/post" component={PostPage} />
         <Route exact path="/blog" component={Blog} />
         <Route exact path="/recipes" component={Recipes} />
-        <Route exact path="/foodtrckr" component={FoodTrckr} />
           </Switch>
       </Router>
       </div>
