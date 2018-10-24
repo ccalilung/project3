@@ -40,18 +40,6 @@ export default {
       return data
       
     })
-  },
-  //foodtrckr
-  addFoodEntry: (food) => {
-    return axios.post("/api/foodtrckr/track", food).then(data => {
-      return data.data
-    })
-  },
-
-  createGraph: () => {
-    return axios.get("/api/foodtrckr/graph").then(data => {
-      return data
-    })
   }
 
 };
