@@ -1,4 +1,5 @@
 import React from 'react';
+import '../Blog/Blog.css'
 
 const BlogsInput = (props) => (
 <div className="form-group">
