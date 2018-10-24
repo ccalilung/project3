@@ -8,14 +8,18 @@
 
 
 .homeCardOne {
-   padding-right: 50px;
-   margin-left: -75px;
+  
+   width: 100%
 }
 
 .homeCardTwo {
-    padding-left: 50px;
+    width: 100%
 }
 
 .homeCardThree {
-    padding-left: 90px;
+    width: 100%
+}
+
+.homeCardFour {
+    width: 100%
 }
