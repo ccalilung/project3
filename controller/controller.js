@@ -111,6 +111,26 @@ module.exports = {
         }).then((data) => {
             res.send(data)
         })
+    },
+
+    //foodtrckr
+    addFoodEntry: (req,res) => {
+        db.Foodtrckr.create({
+            food: req.body.food,
+            calories: req.body.calories,
+            carbs: req.body.carbs,
+            fat: req.body.fat,
+            protein: req.body.protein,
+            sodium: req.body.sodium,
+            sugar: req.body.sugar,
+        }).then(data => {
+            res.send(data)
+        })
+    },
+    createGraph: (req,res) => {
+        db.Foodtrckr.find({}).then((data) => {
+            res.json(data)
+        })
     }
 
 }
