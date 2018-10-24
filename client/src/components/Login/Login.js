@@ -7,6 +7,7 @@ import Nav from '../Nav/Nav'
 import API from "../utils/API";
 import NewUser from './NewUser'
 import WrongPassword from './WrongPassword';
+import '../Login/Login.css'
 
 
 class LoginPage extends React.Component {
@@ -82,15 +83,19 @@ render() {
                 </div>
                 </div>
                 <div className="row mt-4">
-                    <div className="col-md-6 offset-md-3">
+                <div className="col-md-3"><img className="beanImageOne" src={require('../images/numbeanLeft.gif')} width="auto" height="200" /></div>
+                    <div className="col-md-6">
                         <Username value={this.state.username}  onChange={this.handleInputChange} name="username"/>
                         <Password value={this.state.password} onChange={this.handleInputChange} name="password" />
                         <div className="row">
-                            <div className="col-md-12 text-center"><SubmitLogin onClick={this.sendUsernamePassword}> Submit </SubmitLogin> 
-                            <CreateUser onClick={this.createUsernamePassword}>Register as a new user</CreateUser></div>
+                            <div className="col-md-12 text-center">
+                            <div className="submitButton"><SubmitLogin onClick={this.sendUsernamePassword}> Submit </SubmitLogin></div>
+                            <div className="createUser"><CreateUser onClick={this.createUsernamePassword}>Register as a new user</CreateUser></div>
+                            </div>
                         </div>
 
                     </div>
+                    <div className="col-md-3"><img className="beanImageTwo" src={require('../images/numbeanRight.gif')} width="auto" height="200" /></div>
                 </div>
                 <div className="row">
                     <div className="col-md-12 text-center">{one}{two}</div>

@@ -5,3 +5,17 @@
 .card {
     width:300px
 }
+
+
+.homeCardOne {
+   padding-right: 50px;
+   margin-left: -75px;
+}
+
+.homeCardTwo {
+    padding-left: 50px;
+}
+
+.homeCardThree {
+    padding-left: 90px;
+}

@@ -16,9 +16,6 @@ const Nav = (props) => (
       <li className={props.classRecipes}>
         <a className="nav-link" href="/recipes">Recipes</a>
       </li>
-      <li className={props.classFoodtrckr}>
-        <a className="nav-link" href="/foodtrckr">FoodTrckr</a>
-      </li>
       </ul>
 
       <ul className="navbar-nav float:right">
@@ -26,7 +23,6 @@ const Nav = (props) => (
         <a className="nav-link" href="/">Login</a>
       </li>
       </ul>
-      
   </nav>
   
 );
