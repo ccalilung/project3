@@ -137,6 +137,13 @@ class FoodTrckrPage extends React.Component {
         })
     }
 
+    deleteData = () => {
+        API.deleteGraphs().then(() =>{
+
+        })
+    }
+    
+
     render() {
         let thePlot;
         let errorMsg;
@@ -235,7 +242,7 @@ class FoodTrckrPage extends React.Component {
                     <button className="btn btn-success m-2" onClick={() => this.getGraph('protein')}>Protein</button>
                     <button className="btn btn-success m-2" onClick={() => this.getGraph('sugar')}>Sugar</button>
                     <button className="btn btn-success m-2" onClick={() => this.getGraph('sodium')}>Sodium</button>
-                    <button className="btn btn-danger m-2" onClick={() => this.getGraph(false)}>Clear</button>
+                    <button className="btn btn-danger m-2" onClick={() => this.deleteData()}>Clear</button>
 
                     {thePlot}
                     

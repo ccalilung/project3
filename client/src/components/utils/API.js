@@ -52,6 +52,12 @@ export default {
     return axios.get("/api/foodtrckr/graph").then(data => {
       return data
     })
+  },
+
+  deleteGraphs: () => {
+    return axios.delete("api/foodtrckr/delete").then(data => {
+      return data
+    })
   }
 
 };

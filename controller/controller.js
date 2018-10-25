@@ -138,6 +138,12 @@ module.exports = {
         db.Foodtrckr.find({}).then((data) => {
             res.json(data)
         })
+    },
+
+    deleteGraphs: (req,res) => {
+        db.Foodtrckr.remove({}).then(data => {
+            return data
+        })
     }
 
 }
