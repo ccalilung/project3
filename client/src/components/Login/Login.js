@@ -80,6 +80,8 @@ render() {
                 <div className="col-md-12">
                     <h1 className="text-center">Welcome to the Nutrition Lookup &amp; Food Recipe App!</h1>
                     <h5 className="text-center">To get started, please enter your credentials below. If you have not yet registered, choose a username and password and select "Register as a new user."</h5>
+                   
+                    <div className="col-md-12 text-center">{one}{two}</div>
                 </div>
                 </div>
                 <div className="row mt-4">
@@ -96,9 +98,6 @@ render() {
 
                     </div>
                     <div className="col-md-3"><img className="beanImageTwo" src={require('../images/numbeanRight.gif')} width="auto" height="200" /></div>
-                </div>
-                <div className="row">
-                    <div className="col-md-12 text-center">{one}{two}</div>
                 </div>
             </div>
      

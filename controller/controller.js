@@ -74,11 +74,18 @@ module.exports = {
     verifyAuth: (req, res) => {
         db.User.find({
             username: req.body.username
-        }, (err, data) => {
+        }).then((data) => {
+            if (data.length !== 0){
             bcrypt.compare(req.body.password, data[0].password).then(data => {
                 res.send(data)
             })
+        } else {
+            return res.send(false)
+        }
+        
         })
+    
+        
     },
     createUser: (req, res) => {
         db.User.find({
